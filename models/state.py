@@ -20,12 +20,10 @@ class State(BaseModel, Base):
     else:
         @property
         def cities(self):
-            """ Returns the list of City instances with
-            state_id == current State.id """
-            from models import storage
-            tmp_cities = []
-            all_cities = storage.all(City)
-            for city in all_cities.values():
+            """fs getter attribute that returns City instances"""
+            values_city = models.storage.all("City").values()
+            list_city = []
+            for city in values_city:
                 if city.state_id == self.id:
-                    tmp_cities.append(city)
-            return tmp_cities
+                    list_city.append(city)
+            return list_city
