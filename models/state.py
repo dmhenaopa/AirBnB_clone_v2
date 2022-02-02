@@ -4,7 +4,6 @@ from models.city import City
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from models import storage
 import os
 
 
@@ -22,6 +21,7 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """fs getter attribute that returns City instances"""
+            from models import storage
             values_city = storage.all(City)
             list_city = []
             for city in values_city.values():
