@@ -22,9 +22,9 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """fs getter attribute that returns City instances"""
-            values_city = storage.all(City).values()
+            values_city = storage.all(City)
             list_city = []
-            for city in values_city:
+            for city in values_city.values():
                 if city.state_id == self.id:
                     list_city.append(city)
             return list_city
