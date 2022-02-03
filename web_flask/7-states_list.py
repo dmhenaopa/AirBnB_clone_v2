@@ -14,8 +14,8 @@ def remove_session(self):
     storage.close()
 
 
-@app.route('/cities_by_states', strict_slashes=False)
-def display_():
+@app.route('/states_list', strict_slashes=False)
+def display_states():
     """Function that display a html page"""
     states = storage.all('State').values()
     return render_template('7-states_list.html',
